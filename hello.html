@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href='style.css'>
+</head>
+<body>
+    <div id='app'>
+        <div class="container">
+            <!-- <form class='mt-5' v-show='!submitted'>
+                <div class="form-group">
+                    <label for='email'>Email</label>
+                    <input type='email' class="form-control form-control-lg" v-model='email'>
+                    <p id='text'></p>
+                </div>
+                <button type='submit'class='btn btn-primary' v-on:click.prevent='process'>Submit</button>
+            </form>
+            <h2 v-show='submitted' v-cloak>Thank you {{email}}</h2> -->
+
+            <!-- <img :src='imgSrc' :title='imgTitle'> -->
+            <div class="card">
+                <div class="card-header">
+                  <h2>Near Earth Objects</h2>
+                </div>
+                <div class="card-body">
+                    <div class="m-3" v-if='numAsteroids > 0' v-cloak >
+                        <p>showing {{numAsteroids}} items</p>
+                        <p>The closest neo is {{closestObject}}</p>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope='col'>#</th>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Close Approach Date</th>
+                            <th scope='col'>Miss Distance</th>
+                            <th scope='col'>Remove</th>
+                          </tr>
+                        </thead>
+                        <tbody v-cloak>
+                            <tr v-for='(a,index) in asteroids' :key='a.neo_referance_id':style="getRowStyle(a)">
+                                <th scope='row'>{{index +1}}</th>
+                                <td>{{a.name}}</td>
+                                <td>{{getCloseApproachDate(a)}}</td>
+                                <td>
+                                    <ul v-if='a.close_approach_data.length > 0'>
+                                        <li v-for='(value,key) in a.close_approach_data[0].miss_distance'>
+                                            {{key}} : {{value}}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td><button type="button" class="btn btn-outline-danger" @click='remove(index)'>Remove</button></td>
+                                <!-- <td>{{a.close_approach_data.length > 0 ? a.close_approach_data[0].close_approach_date : 'N/A'}}</td> -->
+                            </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+   
+    
+    <script src="vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src='script.js'></script>
+</body>
+</html>
