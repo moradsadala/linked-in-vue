@@ -42,7 +42,7 @@
                           </tr>
                         </thead>
                         <tbody v-cloak>
-                            <tr v-for='(a,index) in asteroids' :key='a.neo_referance_id':style="getRowStyle(a)">
+                            <tr v-for='(a,index) in asteroids' :key='a.neo_referance_id':style="getRowStyle(a)" style='color:green'>
                                 <th scope='row'>{{index +1}}</th>
                                 <td>{{a.name}}</td>
                                 <td>{{getCloseApproachDate(a)}}</td>
